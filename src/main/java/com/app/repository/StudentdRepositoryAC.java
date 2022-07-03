@@ -35,12 +35,5 @@ public interface StudentdRepositoryAC extends CrudRepository <StudentEntity , Lo
     @Query(nativeQuery = true, value ="DELETE FROM student_entity u WHERE u.id =:id")
     void delStudent (@Param("id")Long id);
 
-    @Modifying(flushAutomatically = true)
-    @Transactional
-    @Query(nativeQuery = true, value = "DELETE FROM people w WHERE w.id =:id")
-    void deleteById (@Param("id")Long id);
-
-
-
 
 }

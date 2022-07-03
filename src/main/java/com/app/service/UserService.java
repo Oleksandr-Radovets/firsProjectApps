@@ -28,5 +28,5 @@ public interface UserService {
     // і повернути кількість видалених студентів
     void deleteAllStudents(Long id);
 
-    void deletePeopleById (Long id);
+    void deletePeopleById (Integer id);
 }

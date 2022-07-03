@@ -4,13 +4,14 @@ import com.app.DTO.CreateStudentRequestDto;
 import com.app.DTO.StudentAgeResponseDto;
 import com.app.DTO.StudentResponseDto;
 import com.app.domain.StudentEntity;
+import com.app.repository.AnimalEntityAC;
+import com.app.repository.PeopleRepositoryAC;
 import com.app.repository.StudentdRepositoryAC;
 import com.app.util.DateUtils;
 import com.app.validation.StudentValidation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedList;
 
@@ -18,12 +19,16 @@ import java.util.LinkedList;
 class StudentServiceImpl implements UserService {
 
     private final StudentdRepositoryAC studentdRepositoryAC;
+    private final PeopleRepositoryAC peopleRepositoryAC;
+    private final AnimalEntityAC animalEntityAC;
 
 
 
     @Autowired
-    public StudentServiceImpl(StudentdRepositoryAC studentdRepositoryAC) {
+    public StudentServiceImpl(StudentdRepositoryAC studentdRepositoryAC, PeopleRepositoryAC peopleRepositoryAC, AnimalEntityAC animalEntityAC) {
         this.studentdRepositoryAC = studentdRepositoryAC;
+        this.peopleRepositoryAC = peopleRepositoryAC;
+        this.animalEntityAC = animalEntityAC;
     }
 
     // давай, я тут ))
@@ -78,11 +83,13 @@ class StudentServiceImpl implements UserService {
     public void deleteAllStudents(Long id) {
              studentdRepositoryAC.delStudent(id);
     }
+
     @Override
-    public void deletePeopleById (Long id){
-        studentdRepositoryAC.deleteById(id);
+    public void deletePeopleById (Integer id){
+        peopleRepositoryAC.deletePeople(id);
 
     }
+
 
 
 }

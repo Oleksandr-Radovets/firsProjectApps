@@ -9,18 +9,19 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
 @Data
 @Entity
 @Getter
 @Setter
 public class People {
 
-    @javax.persistence.Id
-    @GeneratedValue (strategy = GenerationType.AUTO)
-    private Long Id;
+    @Id
+    @GeneratedValue (strategy = GenerationType.TABLE)
+    private Integer Id;
     private String name;
     private String lastName;
-    private int aeg;
+    private int age;
     private String phone;
 
     @Override
@@ -29,7 +30,7 @@ public class People {
                 "Id=" + Id +
                 ", name='" + name + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", aeg=" + aeg +
+                ", aeg=" + age  +
                 ", phone='" + phone + '\'' +
                 '}';
     }

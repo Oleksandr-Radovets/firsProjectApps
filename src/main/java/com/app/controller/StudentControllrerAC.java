@@ -48,8 +48,8 @@ public class StudentControllrerAC{
     }
 
     @DeleteMapping  (path="/delPeople")
-    public void deletePeople (@RequestParam Long id) {
-        userService.deletePeopleById( id);
+    public void deletePeople (@RequestParam Integer id) {
+        userService.deletePeopleById(id);
     }
 
 
