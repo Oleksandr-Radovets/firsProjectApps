@@ -7,19 +7,18 @@ import com.app.domain.StudentEntity;
 import com.app.repository.StudentdRepositoryAC;
 import com.app.util.DateUtils;
 import com.app.validation.StudentValidation;
-import com.sun.xml.bind.v2.model.core.ID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedList;
-import java.util.List;
 
 @Service
 class StudentServiceImpl implements UserService {
 
     private final StudentdRepositoryAC studentdRepositoryAC;
+
 
 
     @Autowired
@@ -76,8 +75,14 @@ class StudentServiceImpl implements UserService {
     }
 
     @Override
-    public Collection<StudentEntity> deleteAllStudents(Long id) {
-        Collection<StudentEntity> qw = studentdRepositoryAC.delStudent(id);
-        return qw;
+    public void deleteAllStudents(Long id) {
+             studentdRepositoryAC.delStudent(id);
     }
+    @Override
+    public void deletePeopleById (Long id){
+        studentdRepositoryAC.deleteById(id);
+
+    }
+
+
 }

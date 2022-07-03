@@ -6,7 +6,6 @@ import com.app.DTO.StudentResponseDto;
 import com.app.domain.StudentEntity;
 
 import java.util.Collection;
-import java.util.Optional;
 
 // поки достатньо
 public interface UserService {
@@ -27,5 +26,7 @@ public interface UserService {
 
     // видалити студентів які мають вказані айдішки, для прикладу (1,3,7)
     // і повернути кількість видалених студентів
-    Collection<StudentEntity> deleteAllStudents(Long id);
+    void deleteAllStudents(Long id);
+
+    void deletePeopleById (Long id);
 }

@@ -43,10 +43,14 @@ public class StudentControllrerAC{
         return userService.findStudentsByNameStartsWith(name);
     }
     @DeleteMapping  (path="/del")
-     public Collection<StudentEntity> studentDelete (@RequestParam Long id) {
-         return userService.deleteAllStudents( id);
+     public void studentDelete (@RequestParam Long id) {
+         userService.deleteAllStudents( id);
     }
 
+    @DeleteMapping  (path="/delPeople")
+    public void deletePeople (@RequestParam Long id) {
+        userService.deletePeopleById( id);
+    }
 
 
 

@@ -9,6 +9,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.Id;
 import javax.persistence.Transient;
@@ -30,8 +31,15 @@ public interface StudentdRepositoryAC extends CrudRepository <StudentEntity , Lo
 
 
     @Modifying(flushAutomatically = true)
-    @Query(nativeQuery = true, value ="DELETE FROM student_entity u WHERE u.id like id")
-    Collection<StudentEntity> delStudent (@Param("id")Long id);
+    @Transactional
+    @Query(nativeQuery = true, value ="DELETE FROM student_entity u WHERE u.id =:id")
+    void delStudent (@Param("id")Long id);
+
+    @Modifying(flushAutomatically = true)
+    @Transactional
+    @Query(nativeQuery = true, value = "DELETE FROM people w WHERE w.id =:id")
+    void deleteById (@Param("id")Long id);
+
 
 
 
