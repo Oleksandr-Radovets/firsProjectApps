@@ -3,6 +3,7 @@ package com.app.controller;
 import com.app.DTO.CreateStudentRequestDto;
 import com.app.DTO.StudentAgeResponseDto;
 import com.app.DTO.StudentResponseDto;
+import com.app.domain.People;
 import com.app.domain.StudentEntity;
 import com.app.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Optional;
 import java.util.regex.Pattern;
 
 @RequestMapping(path = "/api/v1/student")
@@ -50,6 +52,10 @@ public class StudentControllrerAC{
     @DeleteMapping  (path="/delPeople")
     public void deletePeople (@RequestParam Integer id) {
         userService.deletePeopleById(id);
+    }
+    @GetMapping (path = "/findpeople")
+    Optional<People> findPeople (@RequestParam Integer ... id){
+        return userService.findP(id.length);
     }
 
 

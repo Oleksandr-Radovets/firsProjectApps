@@ -3,6 +3,7 @@ package com.app.service;
 import com.app.DTO.CreateStudentRequestDto;
 import com.app.DTO.StudentAgeResponseDto;
 import com.app.DTO.StudentResponseDto;
+import com.app.domain.People;
 import com.app.domain.StudentEntity;
 import com.app.repository.AnimalEntityAC;
 import com.app.repository.PeopleRepositoryAC;
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Collection;
 import java.util.LinkedList;
+import java.util.Optional;
 
 @Service
 class StudentServiceImpl implements UserService {
@@ -87,9 +89,10 @@ class StudentServiceImpl implements UserService {
     @Override
     public void deletePeopleById (Integer id){
         peopleRepositoryAC.deletePeople(id);
-
     }
 
-
-
+    @Override
+    public Optional<People> findP(Integer ... id) {
+        return peopleRepositoryAC.findById(id.length);
+    }
 }

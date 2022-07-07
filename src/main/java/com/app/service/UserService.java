@@ -3,9 +3,11 @@ package com.app.service;
 import com.app.DTO.CreateStudentRequestDto;
 import com.app.DTO.StudentAgeResponseDto;
 import com.app.DTO.StudentResponseDto;
+import com.app.domain.People;
 import com.app.domain.StudentEntity;
 
 import java.util.Collection;
+import java.util.Optional;
 
 // поки достатньо
 public interface UserService {
@@ -29,4 +31,6 @@ public interface UserService {
     void deleteAllStudents(Long id);
 
     void deletePeopleById (Integer id);
+
+    Optional<People> findP (Integer ... id);
 }
